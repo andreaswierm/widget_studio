@@ -1,0 +1,36 @@
+name: Pull request quality check
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  flutter_test:
+    name: Continuous integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Import flutter config from fvm
+        uses: kuhnroyal/flutter-fvm-config-action@v1
+      - name: Install flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: ${{ env.FLUTTER_CHANNEL }}
+      - name: Install melos
+        run: dart pub global activate melos
+      - name: Bootstrap
+        run: melos bootstrap
+      - name: Code generation
+        run: melos run generate
+      - name: Analyze
+        run: melos run analyze
+      - name: Test
+        run: melos run test --no-select
