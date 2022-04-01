@@ -1,0 +1,18 @@
+{
+  "name": "widget_studio",
+  "repository": "git@github.com:andreaswierm/widget_studio.git",
+  "license": "MIT",
+  "devDependencies": {
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "^6.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "version": "0.0.0",
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
