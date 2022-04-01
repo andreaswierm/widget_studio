@@ -1,0 +1,41 @@
+name: widget_studio
+
+packages:
+  - packages/**
+
+
+scripts:
+  test:
+    description: Run Flutter tests for a specific package in this project.
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage
+    select-package:
+      flutter: true
+      dir-exists: test
+
+  generate:
+    description: Build all generated Flutter files packages in this project.
+    run: flutter pub global run melos exec --fail-fast --depends-on="build_runner" --flutter -- "flutter packages pub run build_runner build --delete-conflicting-outputs"
+
+  generate:watch:
+    description: Build and watch all generated files for Dart & Flutter packages in this project.
+    run: melos run generate:watch:dart && melos run generate:watch:flutter
+
+  generate:watch:dart:
+    description: Build and watch generated files for Dart packages in this project.
+    run: melos exec --fail-fast --depends-on="build_runner" --no-flutter -- "dart run build_runner watch --delete-conflicting-outputs"
+
+  generate:watch:flutter:
+    description: Build all generated files for Flutter packages in this project.
+    run: melos exec --fail-fast --depends-on="build_runner" --flutter -- "flutter pub run build_runner watch --delete-conflicting-outputs"
+
+  upgrade:
+    description: Upgrade all packages dependencies.
+    run: melos exec --fail-fast --flutter -- "flutter pub upgrade"
+
+  analyze:
+    description: "Analyze all packages"
+    run: melos exec -- "dart analyze ."
+
+  clean:
+    description: "Clean all projects"
+    run: melos exec --fail-fast --flutter -- "flutter clean"
