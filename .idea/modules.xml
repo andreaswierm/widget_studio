@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/packages/annotations/melos_annotations.iml" filepath="$PROJECT_DIR$/packages/annotations/melos_annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/example/melos_example.iml" filepath="$PROJECT_DIR$/packages/example/melos_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/generators/melos_generators.iml" filepath="$PROJECT_DIR$/packages/generators/melos_generators.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/widget_studio/melos_widget_studio.iml" filepath="$PROJECT_DIR$/packages/widget_studio/melos_widget_studio.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_widget_studio.iml" filepath="$PROJECT_DIR$/melos_widget_studio.iml" />
     </modules>
   </component>
